@@ -23,5 +23,10 @@ Route::middleware('auth')->group(function () {
 
 });
 
+// Fallback route to redirect to home page if endpoint doesn't exist
+Route::fallback(function () {
+    return redirect('/');
+});
+
 
 require __DIR__.'/auth.php';
