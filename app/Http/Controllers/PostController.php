@@ -11,12 +11,8 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::with('category')->get();
-
         return view('posts.index', compact('posts'));
-
     }
-
-
 
     public function create()
     {
@@ -27,6 +23,12 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => ['required'],
+            'text' => ['required'],
+            'category_id' => ['required'],
+        ]);
+
         Post::create([
             'title' => $request->input('title'),
             'text' => $request->input('text'),
@@ -36,16 +38,14 @@ class PostController extends Controller
         return redirect()->route('posts.index');
     }
 
-    public function show(Post $post)     {
-        $single = Post::find($post);
-
+    public function show(Post $post)
+    {
         return view('posts.single', compact('post'));
     }
 
     public function edit(Post $post)
     {
         $categories = Category::all();
-
         return view('posts.edit', compact('post', 'categories'));
     }
 
@@ -63,8 +63,6 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-
         return redirect()->route('posts.index');
     }
 }
-
