@@ -36,11 +36,10 @@ class PostController extends Controller
         return redirect()->route('posts.index');
     }
 
-    public function show(Post $post)
-    {
-        $post = Post::find($postId);
+    public function show(Post $post)     {
+        $single = Post::find($post);
 
-        return view('post', compact('post'));
+        return view('posts.single', compact('post'));
     }
 
     public function edit(Post $post)

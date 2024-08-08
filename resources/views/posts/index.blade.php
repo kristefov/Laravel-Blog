@@ -21,8 +21,10 @@
                         </thead>
                         <tbody>
                             @foreach($posts as $post)
+
+
                                 <tr>
-                                    <td>{{ $post->title }}</td>
+                                    <td><a href="{{ route('posts.show', $post) }}">{{ $post->title }}</a></td>
                                     <td>{{ $post->category->name }}</td>
                                     <td>
                                         <a href="{{ route('posts.edit', $post) }}">Edit</a>
@@ -33,6 +35,7 @@
                                         </form>
                                     </td>
                                 </tr>
+
                             @endforeach
                         </tbody>
                     </table>

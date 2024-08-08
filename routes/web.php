@@ -1,11 +1,14 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('single/{post}', [\App\Http\Controllers\PostController::class, 'show'])->name('single.show');
+Route::resource('posts', \App\Http\Controllers\PostController::class);
+
+
 
 
 Route::middleware('auth')->group(function () {
@@ -13,17 +16,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
 
     Route::middleware('is_admin')->group(function () {
         Route::resource('categories', \App\Http\Controllers\CategoryController::class);
-        Route::resource('posts', \App\Http\Controllers\PostController::class);
-        Route::get('posts/{postId}', [\App\Http\Controllers\PostController::class, 'show'])->name('post.show');
-
-
     });
+
 });
 
 
