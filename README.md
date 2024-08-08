@@ -1,27 +1,16 @@
 [![Hex.pm](https://img.shields.io/badge/license%20-mit-blue?style=for-the-badge&logo=appveyor)](https://choosealicense.com/licenses/mit)
 
 ## Table of Contents
-
-- [](#)
-  - [Description](#description)
-- [](#-1)
-  - [Technologies Used](#technologies-used)
-  - [Installation](#installation)
-- [](#-2)
-  - [Usage](#usage)
-- [](#-3)
-  - [How to Contribute](#how-to-contribute)
-- [](#-4)
-  - [Walkthrough Video](#walkthrough-video)
-- [](#-5)
-- [](#-6)
-  - [Link](#link)
-  - [Authors](#authors)
-- [](#-7)
-  - [License](#license)
-  
-
-
+* [Description](#description)
+* [Table of Contents](#table-of-contents)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Walkthrough](#walkthrough)
+* [Link](#link)
+* [Authors](#authors)
+* [Contributors](#contributors)
+* [Release](#release)
+* [License](#license)
 
 #
 
