@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
 
 class CategoryController extends Controller
 {
@@ -72,8 +73,16 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        $category->delete();
+        try {
+            $category->delete();
 
-        return redirect()->route('categories.index');
+            return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
+        } catch (QueryException $e) {
+            if ($e->getCode() == '23000') { // Integrity constraint violation
+                return redirect()->route('categories.index')->with('error', 'Cannot delete category because it is associated with one or more posts.');
+            }
+
+            return redirect()->route('categories.index')->with('error', 'An unexpected error occurred.');
+        }
     }
 }
