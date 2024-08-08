@@ -14,7 +14,12 @@
                             <h1 class="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">{{ $post->title }}</h1>
                             <p class="text-gray-600 dark:text-gray-400 mb-4">{{ $post->text }}</p>
                             <p class="text-gray-600 dark:text-gray-400 mb-4">{{ $post->category->name }}</p>
-                            <a href="{{ route('posts.index') }}" class="text-blue-500 hover:text-blue-700 dark:hover:text-blue-300">Back to posts</a>
+                            <div class="flex space-x-4">
+                                <a href="/" class="bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-700 dark:hover:bg-indigo-300">Back to Home</a>
+                                @auth
+                                <a href="{{ route('posts.index') }}" class="bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-700 dark:hover:bg-indigo-300">Back to Posts</a>
+                                @endauth
+                            </div>
                         </div>
                     </div>
                 </div>
